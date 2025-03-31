@@ -1,6 +1,8 @@
 # Seguimiento4_HashTables_LinkedLists
 A00405603 - Maria Juliana Marin Shek
 
+A00407201 - Santiago Arias Parra
+
 
 1. Que sea computablemente eficiente. 
 2. Que distribuya las clases de forma uniforme. 
