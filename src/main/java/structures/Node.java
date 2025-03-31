@@ -1,23 +1,29 @@
 package structures;
 
-public class Node<T> {
+// Implementación de una Tabla Hash con Listas Enlazadas Dobles Propias
 
-    //Es una lista enlazada doble:D
+/**
+ * Clase Nodo para nuestra lista enlazada doble.
+ * Representa un elemento con clave y valor.
+ * @param <K> Tipo de la clave.
+ * @param <V> Tipo del valor.
+ */
+class Node<K, V> {
+    K key;  // Clave del nodo
+    V value;  // Valor almacenado en el nodo
+    Node<K, V> next;  // Apunta al siguiente nodo
+    Node<K, V> prev;  // Apunta al nodo anterior
 
-
-    //Valor almacenado en el nodo
-//    T data;
-//
-//    //Referencia al nodo siguiente y al anterior
-//    Node<T> next;
-//    Node<T> prev;
-//
-//    //Constructor
-//    public Node(T data){
-//        this.data = data;
-//        this.next = null; //Inicialmente no tiene sgt
-//        this.prev = null; //Ni anterior
-//    }
-
+    /**
+     * Constructor de un nodo con clave y valor.
+     * @param key Clave del nodo.
+     * @param value Valor del nodo.
+     */
+    public Node(K key, V value) {
+        this.key = key;
+        this.value = value;
+        this.next = null;
+        this.prev = null;
+    }
 
 }

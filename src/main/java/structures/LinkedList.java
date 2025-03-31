@@ -1,48 +1,68 @@
 package structures;
 
-public class LinkedList<T> {
-//    private Node<T> head; //Primer nodo de la lista
-//    private Node<T> tail; //Ultimo nodo de la lista
-//    private int size; //tamanho de la lista
-//
-//    //Constructor
-//    public LinkedList(){
-//        this.head = null;
-//        this.tail = null;
-//        this.size = 0;
-//    }
-//
-//    //Metodo para agregar un elemento al finmal de la lista
-//    public void addNode(T data){
-//        Node<T> newNode = new Node<>(data);
-//        //caso 0: la lista esta vacia
-//
-//        if(head == null){
-//            head = newNode;
-//        }else {
-//            tail.next = newNode;
-//            newNode.prev = tail;
-//        }
-//        tail = newNode;
-//        size++;
-//    }
-//    // Metodo para buscar un nodo con un valor especifico
-//    public Node<T> search(T data) {
-//        Node<T> current = head;
-//        while (current != null) {
-//            if (current.data.equals(data)) {
-//                return current;
-//            }
-//            current = current.next;
-//        }
-//        return null;
-//    }
-//
-//    // Metodo para obtener el tamanho de la lista
-//    public int getSize() {
-//        return size;
-//    }
-//
-//    //Metodo para eliminar un nodo de la lista
+/**
+ * Clase para una lista enlazada doble.
+ * Se utiliza para manejar colisiones en la tabla hash.
+ * @param <K> Tipo de la clave.
+ * @param <V> Tipo del valor.
+ */
+class LinkedList<K, V> {
+    private Node<K, V> head; // Referencia al primer nodo
 
+    /**
+     * Agrega un nodo al final de la lista.
+     * @param key Clave del nodo.
+     * @param value Valor del nodo.
+     */
+    public void add(K key, V value) {
+        Node<K, V> newNode = new Node<>(key, value);
+        if (head == null) {
+            head = newNode;
+        } else {
+            Node<K, V> temp = head;
+            while (temp.next != null) {
+                temp = temp.next;
+            }
+            temp.next = newNode;
+            newNode.prev = temp;
+        }
+    }
+
+    /**
+     * Busca un nodo por su clave y devuelve su valor.
+     * @param key Clave del nodo.
+     * @return Valor del nodo si se encuentra, de lo contrario null.
+     */
+    public V get(K key) {
+        Node<K, V> temp = head;
+        while (temp != null) {
+            if (temp.key.equals(key)) {
+                return temp.value;
+            }
+            temp = temp.next;
+        }
+        return null;
+    }
+
+    /**
+     * Elimina un nodo basado en su clave.
+     * @param key Clave del nodo a eliminar.
+     */
+    public void remove(K key) {
+        Node<K, V> temp = head;
+        while (temp != null) {
+            if (temp.key.equals(key)) {
+                if (temp.prev != null) {
+                    temp.prev.next = temp.next;
+                } else {
+                    head = temp.next;
+                }
+                if (temp.next != null) {
+                    temp.next.prev = temp.prev;
+                }
+                return;
+            }
+            temp = temp.next;
+        }
+    }
 }
