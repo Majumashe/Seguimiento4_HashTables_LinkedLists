@@ -31,6 +31,9 @@ public class HashTable<K, V> {
         int hash = 0;
         String keyString = key.toString();
         for (int i = 0; i < keyString.length(); i++) {
+
+            // se usa ese valor para hash porque es un tipo de standar
+            // https://stackoverflow.com/questions/299304/why-does-javas-hashcode-in-string-use-31-as-a-multiplier
             hash = (hash * 31 + keyString.charAt(i)) % capacity;
         }
         return Math.abs(hash);
